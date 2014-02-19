@@ -18,10 +18,10 @@ newSizes = [(384,384), (1536,384), (384,384), # head
 # locations of the parts in the finished, printable image
 printCoords = [(450,75), (66,459), (450,843), # head
                (600,1350), (408,1542), (600,2118), # body
-               (1930,140), (1738,332), (1930,908), # arms
-               (2040,1170), (1656,1362), (2040,1938),
-               (300,2275), (108,2467), (300,3043), # legs
-               (1600,2275), (1216,2467), (1600,3043)]
+               (1930,140), (1738,332), (1930,908), # arm
+               (300,2275), (108,2467), (300,3043), # leg
+               (2040,1170), (1656,1362), (2040,1938), # reversed arm
+               (1600,2275), (1216,2467), (1600,3043)] # reversed leg
 
 # print usage if the number of arguments is wrong
 if len(sys.argv) != 3:
@@ -60,24 +60,11 @@ draw.text((100,2300), "Legs", fill=(0,0,0))
 # Cut out sections of the skin file, scale them, and paste them into our image
 #
 
-printable.paste(skin.crop(skinCoords[0]).resize(newSizes[0]), printCoords[0])
-printable.paste(skin.crop(skinCoords[1]).resize(newSizes[1]), printCoords[1])
-printable.paste(skin.crop(skinCoords[2]).resize(newSizes[2]), printCoords[2])
-printable.paste(skin.crop(skinCoords[3]).resize(newSizes[3]), printCoords[3])
-printable.paste(skin.crop(skinCoords[4]).resize(newSizes[4]), printCoords[4])
-printable.paste(skin.crop(skinCoords[5]).resize(newSizes[5]), printCoords[5])
-printable.paste(skin.crop(skinCoords[6]).resize(newSizes[6]), printCoords[6])
-printable.paste(skin.crop(skinCoords[7]).resize(newSizes[7]), printCoords[7])
-printable.paste(skin.crop(skinCoords[8]).resize(newSizes[8]), printCoords[8])
-printable.paste(skin.crop(skinCoords[6]).resize(newSizes[6]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[9])
-printable.paste(skin.crop(skinCoords[7]).resize(newSizes[7]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[10])
-printable.paste(skin.crop(skinCoords[8]).resize(newSizes[8]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[11])
-printable.paste(skin.crop(skinCoords[9]).resize(newSizes[9]), printCoords[12])
-printable.paste(skin.crop(skinCoords[10]).resize(newSizes[10]), printCoords[13])
-printable.paste(skin.crop(skinCoords[11]).resize(newSizes[11]), printCoords[14])
-printable.paste(skin.crop(skinCoords[9]).resize(newSizes[9]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[15])
-printable.paste(skin.crop(skinCoords[10]).resize(newSizes[10]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[16])
-printable.paste(skin.crop(skinCoords[11]).resize(newSizes[11]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[17])
+for i in range(12):
+	printable.paste(skin.crop(skinCoords[i]).resize(newSizes[i]), printCoords[i])
+
+for i in range(12, 18):
+	printable.paste(skin.crop(skinCoords[i-6]).resize(newSizes[i-6]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[i])
 
 #
 # Save the image
