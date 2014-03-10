@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import os, sys
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 # coordinates of the parts in the skin file
 skinCoords = [(8,0,16,8), (0,8,32,16), (16,0,24,8), # head
@@ -51,20 +51,39 @@ printable = Image.new("RGB", (2550, 3300), (255, 255, 255))
 #
 draw = ImageDraw.Draw(printable)
 
-draw.text((120,180), "Head", fill=(0,0,0))
-draw.text((180,1400), "Body", fill=(0,0,0))
-draw.text((1650,180), "Arms", fill=(0,0,0))
-draw.text((100,2300), "Legs", fill=(0,0,0))
+draw.rectangle([(449, 74), (834, 459)], (0, 0, 0))
+draw.rectangle([(65, 458), (1602, 843)], (0, 0, 0))
+draw.rectangle([(449, 842), (834, 1227)], (0, 0, 0))
+draw.rectangle([(599, 1349), (984, 1542)], (0, 0, 0))
+draw.rectangle([(407, 1541), (1560, 2118)], (0, 0, 0))
+draw.rectangle([(599, 2117), (984, 2310)], (0, 0, 0))
+draw.rectangle([(1929, 139), (2122, 332)], (0, 0, 0))
+draw.rectangle([(1737, 331), (2506, 908)], (0, 0, 0))
+draw.rectangle([(1929, 907), (2122, 1100)], (0, 0, 0))
+draw.rectangle([(299, 2274), (492, 2467)], (0, 0, 0))
+draw.rectangle([(107, 2466), (876, 3043)], (0, 0, 0))
+draw.rectangle([(299, 3042), (492, 3235)], (0, 0, 0))
+draw.rectangle([(2039, 1169), (2232, 1362)], (0, 0, 0))
+draw.rectangle([(1655, 1361), (2424, 1938)], (0, 0, 0))
+draw.rectangle([(2039, 1937), (2232, 2130)], (0, 0, 0))
+draw.rectangle([(1599, 2274), (1792, 2467)], (0, 0, 0))
+draw.rectangle([(1215, 2466), (1984, 3043)], (0, 0, 0))
+draw.rectangle([(1599, 3042), (1792, 3235)], (0, 0, 0))
+
 
 #
 # Cut out sections of the skin file, scale them, and paste them into our image
 #
 
+# first the normal sections
 for i in range(12):
-	printable.paste(skin.crop(skinCoords[i]).resize(newSizes[i]), printCoords[i])
+	printable.paste(skin.crop(skinCoords[i]).resize(newSizes[i]),
+	                printCoords[i])
 
+# then the reversed sections
 for i in range(12, 18):
-	printable.paste(skin.crop(skinCoords[i-6]).resize(newSizes[i-6]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[i])
+	printable.paste(skin.crop(skinCoords[i-6]).resize(newSizes[i-6])
+	                .transpose(Image.FLIP_LEFT_RIGHT), printCoords[i])
 
 #
 # Save the image
