@@ -8,7 +8,7 @@ You can obtain your current skin file at minecraft.net/skin/YOUR_USERNAME.png
 Usage
 =====
 
-First, install the dependencies as detailed below. Then, simply type the following in the command line, replacing SKIN_FILE with your skin file and OUTPUT_FILE with the name of the file:
+First, install the dependencies as detailed below. Then, simply type the following in the command line, replacing SKIN_FILE with your skin file and OUTPUT_FILE with the name of the file to create:
 
     paper-skin.py SKIN_FILE OUTPUT_FILE
 
