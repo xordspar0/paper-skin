@@ -173,4 +173,7 @@ for i in range(12, 18):
 #
 # Save the image
 #
-printable.save(sys.argv[2])
+try:
+	printable.save(sys.argv[2])
+except KeyError:
+	printable.save(sys.argv[2], format="png")
