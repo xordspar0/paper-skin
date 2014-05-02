@@ -24,7 +24,7 @@ Install Python 3 and Pillow from your distro's repository.
 
 For example:
 
-    sudo apt-get python3 python-pil
+    sudo apt-get install python3 python-pil
 
 Alternatively, paper-skin is in the [AUR](https://aur.archlinux.org/packages/paper-skin).
 
