@@ -167,11 +167,11 @@ for i in range(12, 18, 3):
 
 # first the normal sections
 for i in range(12):
-	printable.paste(skin.crop(skinCoords[i]).resize(newSizes[i]), printCoords[i])
+	printable.paste(skin.crop(skinCoords[i]).resize(newSizes[i], Image.NEAREST), printCoords[i])
 
 # then the mirrored sections
 for i in range(12, 18):
-	printable.paste(skin.crop(skinCoords[i-6]).resize(newSizes[i-6]).transpose(Image.FLIP_LEFT_RIGHT), printCoords[i])
+	printable.paste(skin.crop(skinCoords[i-6]).resize(newSizes[i-6], Image.NEAREST).transpose(Image.FLIP_LEFT_RIGHT), printCoords[i])
 
 #
 # Save the image
