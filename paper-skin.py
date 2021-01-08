@@ -29,7 +29,9 @@ printCoords = [
 # print usage if the number of arguments is wrong
 if len(sys.argv) != 3:
 	print("usage: " + sys.argv[0] + " SKIN_FILE OUTPUT_FILE")
-	print("You can obtain your current skin file at minecraft.net/skin/YOUR_USERNAME.png")
+	print("\nYou can obtain your current skin file my logging into your account at\n\
+minecraft.net, going to the skin section of your profile, right clicking your\n\
+current skin image, and saving it as a file.")
 	sys.exit(1)
 
 #

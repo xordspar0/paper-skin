@@ -3,7 +3,9 @@ paper-skin
 
 A simple Python script for making Minecraft player skins into printable paper crafts
 
-You can obtain your current skin file at minecraft.net/skin/YOUR_USERNAME.png
+You can obtain your current skin file my logging into your account at
+minecraft.net, going to the skin section of your profile, right clicking your
+current skin image, and saving it as a file.
 
 Usage
 =====
